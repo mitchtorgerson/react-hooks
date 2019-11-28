@@ -1,65 +1,43 @@
-import React, {Fragment, PureComponent} from 'react';
-import { bindActionCreators } from "redux";
-import connect from "react-redux/es/connect/connect";
-import PropTypes from 'prop-types';
+import React, {Fragment, useState} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-import {
-    performSearch
-} from '../../store/search/Actions';
+import { performSearch } from '../../store/search/Actions';
+import './styles.css';
 
-export class SearchBox extends PureComponent {
+function SearchBox() {
+    const {
+        search: {
+            imageUrl = ''
+        }
+    } = useSelector(state => state);
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            searchTxt: ''
-        };
-    }
+    const dispatch = useDispatch();
 
-    handleSearch = (e) => {
-        const searchTxt = this.state.searchTxt;
-        this.props.performSearch(searchTxt);
+    const [searchTxt, setSearchTxt] = useState('');
+
+    const handleChangeSearchTxt = () => {
+        dispatch(performSearch(searchTxt));
     };
 
-    setSearchTxt = (e) => {
-        this.setState({searchTxt: e.target.value});
+    const handleSearch = e => {
+        setSearchTxt(e.target.value);
     };
 
-    render() {
-        return (
-            <div>
-                <div className="search-box">
-                    <input type={'text'} onChange={this.setSearchTxt} />
-                    <button onClick={this.handleSearch}>Search</button>
-                </div>
-                <div>
-                    {this.props.search.imageUrl &&
-                        <Fragment>
-                            <img src={this.props.search.imageUrl} alt={'Giphy'} />
-                            <div>{this.props.search.imageUrl}</div>
-                        </Fragment>}
-                </div>
+    return (
+        <div>
+            <div className="search-box">
+                <input type={'text'} onChange={handleSearch} />
+                <button onClick={handleChangeSearchTxt}>Search</button>
             </div>
-        );
-    }
+            <div>
+                {imageUrl &&
+                    <Fragment>
+                        <img src={imageUrl} alt={'Giphy'} />
+                        <div>{imageUrl}</div>
+                    </Fragment>}
+            </div>
+        </div>
+    );
 }
 
-
-SearchBox.propTypes = {
-    search: PropTypes.object,
-    performSearch: PropTypes.func,
-};
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        performSearch: bindActionCreators(performSearch, dispatch),
-    };
-};
-
-export function mapStateToProps(state) {
-    return {
-        search: state.search
-    };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(SearchBox);
+export default SearchBox;
