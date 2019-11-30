@@ -1,0 +1,62 @@
+.blog-toolbar {
+    height: 30px;
+    background: #ccc;
+    text-align: right;
+    padding: 7px 20px 0 20px;
+    border-bottom: #aaa 1px solid;
+}
+
+.blog-toolbar .user-label {
+    padding-right: 10px;
+}
+
+.blog-container {
+    display: flex;
+    width: 100%;
+}
+
+.blog-column {
+    flex: 1;
+    border-left: #aaa 1px solid;
+}
+
+.blog-content {
+    flex: 3;
+    border-left: #aaa 1px solid;
+}
+
+.no-content-row {
+    width: 100%;
+    text-align: center;
+    font-size: 150%;
+    padding-top: 20px;
+}
+
+.blog-content .user-row {
+    display: flex;
+    padding-bottom: 20px;
+}
+
+.blog-content .user-row .user-icon {
+    flex: 1;
+}
+
+.blog-content .user-row .user-head {
+    flex: 11;
+    font-size: 150%;
+}
+
+.blog-content .user-row .user-label {
+    flex: 11;
+}
+
+.blog-header {
+    background-color: #ccc;
+    padding: 5px;
+    border-bottom: #aaa 1px solid;
+}
+
+.blog-content {
+    text-align: left;
+    padding: 20px;
+}

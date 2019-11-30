@@ -1,19 +1,16 @@
 import React from 'react';
-import SearchBox from './components/searchBox';
+import Blog from './components/Blog';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
         <header>
-            Giphy Random
+            Show Blog Posts
         </header>
         <div className={'content'}>
-            <SearchBox />
+            <Blog />
         </div>
-        <footer>
-            Test React App
-        </footer>
     </div>
   );
 }

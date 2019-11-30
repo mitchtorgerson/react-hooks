@@ -1,0 +1,16 @@
+.list-item {
+    cursor: pointer;
+    padding: 10px 15px;
+    text-align: left;
+    border-bottom: #aaa 1px solid;
+}
+
+.list-item .user-name {
+    font-style: italic;
+    color: #aaa;
+    font-size: 90%;
+}
+
+.list-item:hover {
+    background: #efefef;
+}
